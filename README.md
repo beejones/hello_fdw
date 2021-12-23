@@ -1,4 +1,4 @@
-# ccf_fdw
+# hello_fdw
 Foreign Data Wrapper (FDW) sample
 
 # Build
