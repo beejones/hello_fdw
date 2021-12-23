@@ -1,5 +1,5 @@
 # ccf_fdw
-Foreign Data Wrapper (FDW) for CCF
+Foreign Data Wrapper (FDW) sample
 
 # Build
 sudo make install
