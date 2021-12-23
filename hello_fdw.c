@@ -30,7 +30,7 @@
 #include "optimizer/pathnode.h"
 #include "optimizer/planmain.h"
 #include "optimizer/restrictinfo.h"
-#include "optimizer/var.h"
+#include "optimizer/optimizer.h"
 #include "utils/memutils.h"
 #include "utils/rel.h"
 
@@ -133,6 +133,7 @@ helloGetForeignPaths(PlannerInfo *root,
   add_path(baserel, 
            (Path*) create_foreignscan_path(root,
                                            baserel,
+                                           NULL,
                                            baserel->rows,
                                            10, /* startup_cost */
                                            1000, /* total_cost */
@@ -228,7 +229,7 @@ helloIterateForeignScan(ForeignScanState *node)
   }
 
   tuple = BuildTupleFromCStrings(attinmeta, values);
-  ExecStoreTuple(tuple, slot, InvalidBuffer, true);
+  ExecStoreHeapTuple(tuple, slot, false);
 
   hestate->rownum++;
 
